@@ -21,10 +21,8 @@ public class Deposit extends Transaction {
     @Override
     public boolean execute() {
         try {
-            // Realizar el depósito en la cuenta
             getSource().deposit(getAmount());
             
-            // El depósito fue exitoso
             return true;
         } catch (Exception e) {
          return false;

@@ -4,6 +4,8 @@
  */
 package Account;
 
+import Person.Customer;
+
 /**
  *
  * @author ekard
@@ -20,17 +22,14 @@ public class ColonAccount extends Account {
 
     @Override
     public boolean transfer(Account destination, double amount) {
-        // Aquí adaptamos el método transfer para cuentas en Colones
         if (amount > 0 && getBalance() >= amount && destination != null) {
             if (destination instanceof DollarAccount) {
-                // Si la cuenta de destino es en Dólares, convertir el monto a Dólares antes de la transferencia
-                double exchangeRate = DollarAccount.getExchangeRate(); // Obtener la tasa de cambio de Dólares
+                double exchangeRate = DollarAccount.getExchangeRate(); 
                 double amountInDollars = amount / exchangeRate;
                 if (super.transfer(destination, amountInDollars)) {
                     return true;
                 }
             } else if (destination instanceof ColonAccount) {
-                // Si la cuenta de destino es en Colones, realizar la transferencia directamente en Colones
                 if (super.transfer(destination, amount)) {
                     return true;
                 }
