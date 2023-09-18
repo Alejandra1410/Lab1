@@ -17,20 +17,13 @@ public class Customer extends Person {
         this.email = email;
         this.address = address;
     }
-
-    public Customer(Date dateOfBirth, String phone) {   
-        this.dateOfBirth = dateOfBirth;
-        this.phone = phone;
-        this.email="";
-        this.address="";
-    }
  
-    public Customer(Date dateOfBirth, String id, String name) {
+    public Customer(Date dateOfBirth, String id, String name,String email,String address) {
         super(id, name);
         this.dateOfBirth = dateOfBirth;
-        this.phone="";
-        this.email="";
-        this.address="";
+        this.email= email;
+        this.address= address;
+        this.phone= "";
     }
 
     public Date getDateOfBirth() {
@@ -60,10 +53,11 @@ public class Customer extends Person {
     public void setAddress(String address) {
         this.address = address;
     }
-private int calculateAge() {
-    return Period.between(this.dateOfBirth.toLocalDate(), LocalDate.now()).getYears();
+    private int calculateAge() {
+         return Period.between(this.dateOfBirth.toLocalDate(), LocalDate.now()).getYears();
 }
-public int getAge(){
- return calculateAge();
-}
+
+    public int getAge(){
+         return calculateAge();
+   }
 }

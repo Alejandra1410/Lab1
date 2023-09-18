@@ -11,12 +11,17 @@ import Person.Customer;
  * @author ekard
  */
 public class DollarAccount extends Account{
-    private static double exchangeRate = 534.48; 
+    private static double exchangeRate; 
 
+    public DollarAccount(String number, double balance, Customer customer, double exchangeRate) {
+        super(number, balance, customer);
+        DollarAccount.exchangeRate = exchangeRate;
+    }
+    
     public DollarAccount(String number, double balance, Customer customer) {
         super(number, balance, customer);
     }
-
+    
     public DollarAccount(String number, Customer customer) {
         super(number, customer);
     }

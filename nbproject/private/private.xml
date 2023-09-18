@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
-<<<<<<< HEAD
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Lab1/src/Transaction/Deposit.java</file>
+            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Lab1/src/Account/ColonAccount.java</file>
+            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Lab1/src/Person/View/UserConsoleView.java</file>
+            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Lab1/src/Person/Person.java</file>
             <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Lab1/src/Person/Customer.java</file>
+            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Lab1/src/Transaction/Transaction.java</file>
+            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Lab1/src/Cruds/Crud.java</file>
+            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Lab1/src/Controllers/Controller.java</file>
+            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Lab1/src/Views/View.java</file>
+            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Lab1/src/Person/User.java</file>
+            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Lab1/src/Account/DollarAccount.java</file>
+            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Lab1/src/Cards/Card.java</file>
+            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Lab1/src/Transaction/Withdrawal.java</file>
             <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Lab1/src/Account/Account.java</file>
+            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Lab1/src/Transaction/Transfer.java</file>
         </group>
     </open-files>
-=======
-<<<<<<< HEAD
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
-    </open-files>
-=======
->>>>>>> b632492f43fce7019773096bcc62ba129adefce0
->>>>>>> 2cef2c1180f21b69f65d1d63e02ab3bdbb3722af
 </project-private>

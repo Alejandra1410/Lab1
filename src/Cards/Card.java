@@ -4,7 +4,7 @@ package Cards;
  *
  * @author abiga
  */
-public abstract class Card {//implements Statusontrol
+public abstract class Card {//implements StatusControl
     private String number;
     private boolean active;
 
@@ -19,6 +19,11 @@ public abstract class Card {//implements Statusontrol
     public Card(String number, boolean active) {
         this.number = number;
         this.active = active;
+    }
+    
+
+    public Card(String number) {
+        this.number = number;
     }
     public void activate() {
     this.active = true; 

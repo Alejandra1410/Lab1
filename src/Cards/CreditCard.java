@@ -26,7 +26,14 @@ public class CreditCard extends Card {
         this.balance = balance;
         this.creditLimit = creditLimit;
     }
-
+    public boolean makePayment(double amount) {
+    if (isActive() && amount > 0) {
+        balance -= amount;
+        return true;
+    }
+    return false;
+    }
+    
     @Override
     public boolean makePurchase(double amount) {
      if (isActive() && amount > 0) {
