@@ -4,7 +4,7 @@ package Cards;
  *
  * @author abiga
  */
-public abstract class Card {//implements Statusontrol
+public abstract class Card {//implements StatusControl
     private String number;
     private boolean active;
 
