@@ -18,7 +18,7 @@ public class Customer extends Person {
         this.address = address;
     }
 
-    public Customer(Date dateOfBirth, String phone) {
+    public Customer(Date dateOfBirth, String phone) {   
         this.dateOfBirth = dateOfBirth;
         this.phone = phone;
         this.email="";
