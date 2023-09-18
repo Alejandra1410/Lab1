@@ -1,18 +1,12 @@
+package Person.DTO;
 
-package Person;
-
-public abstract class Person {
+public abstract class PersonDTO {
   private String id;
-    private String name; 
+  private String name; 
 
-    public Person() {
+    public PersonDTO() {
     }
-
-    public Person(String id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
+    
     public String getId() {
         return id;
     }
@@ -20,9 +14,12 @@ public abstract class Person {
     public String getName() {
         return name;
     }
-
-    public void setName(String name) {
+    public PersonDTO(String id, String name) {
+        this.id = id;
         this.name = name;
     }
+
     
+
+  
 }

@@ -33,6 +33,11 @@ public abstract class Transaction {
         this.date = date;
     }
     
+    public Transaction(double amount, Account source) {
+        this.amount = amount;
+        this.source = source;
+    }
+    
     public abstract boolean execute();
 }
 
