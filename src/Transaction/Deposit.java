@@ -5,7 +5,6 @@
 package Transaction;
 
 import Account.Account;
-import java.sql.Date;
 
 
 /**
@@ -14,8 +13,8 @@ import java.sql.Date;
  */
 public class Deposit extends Transaction {
     
-    public Deposit(double amount, Account source, Date date) {
-        super(amount, source, date);
+    public Deposit(double amount, Account source) {
+        super(amount, source);
     }
 
     @Override

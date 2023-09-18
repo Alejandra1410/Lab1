@@ -13,9 +13,11 @@ public class DebitCard extends Card {
         return account;
     }
     
-    public DebitCard(String number, boolean active) {
-        super(number, active);
+    public DebitCard(String number, Account account) {
+        super(number);
+        this.account = account;
     }
+    
 
    @Override
    public boolean makePurchase(double amount) {

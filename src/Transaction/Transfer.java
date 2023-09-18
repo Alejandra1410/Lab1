@@ -1,8 +1,6 @@
 package Transaction;
 
 import Account.Account;
-import java.sql.Date;
-
 /**
  *
  * @author ekard
@@ -11,8 +9,8 @@ public class Transfer extends Transaction {
     
     private Account destination;
 
-    public Transfer(double amount, Account source, Account destination, Date date) {
-        super(amount, source, date);
+    public Transfer(double amount, Account source, Account destination) {
+        super(amount, source);
         this.destination = destination;
     }
 

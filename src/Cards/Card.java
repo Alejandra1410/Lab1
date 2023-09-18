@@ -20,6 +20,11 @@ public abstract class Card {//implements StatusControl
         this.number = number;
         this.active = active;
     }
+    
+
+    public Card(String number) {
+        this.number = number;
+    }
     public void activate() {
     this.active = true; 
    }
