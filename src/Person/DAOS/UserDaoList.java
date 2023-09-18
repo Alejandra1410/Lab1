@@ -1,6 +1,7 @@
 package Person.DAOS;
 
 import Dao.Dao;
+import Person.DTO.UserDTO;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
  * @author abiga <3
  */
 public class UserDaoList implements Dao<UserDTO> {
-   private HashMap<String,UserDto> userList;
+   private HashMap<String,UserDTO> userList;
 
     public UserDaoList(){
        userList=new HashMap();
