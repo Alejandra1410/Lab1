@@ -2,7 +2,7 @@
 package Person;
 
 public class User extends Person {
-     private String userName;
+    private String userName;
     private int password;
 
     public User(String userName, int password, String id, String name) {

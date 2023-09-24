@@ -9,7 +9,7 @@ package Transaction.DTO;
  *
  * @author ekard
  */
-public class DepositDTO extends TransactionDTO {
+public class DepositDTO extends TransactionDTO { //Falta AccountDTO CREOOO
 
      public DepositDTO(double amount, Account source) {
         super(amount, source);

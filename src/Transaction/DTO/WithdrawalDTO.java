@@ -10,7 +10,7 @@ import Account.Account;
  *
  * @author ekard
  */
-public class WithdrawalDTO extends TransactionDTO {
+public class WithdrawalDTO extends TransactionDTO { //Falta AccountDTO CREOOO
     
     public WithdrawalDTO(double amount, Account source) {
         super(amount, source);

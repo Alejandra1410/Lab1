@@ -7,7 +7,7 @@ import Account.Account;
  *
  * @author ekard
  */
-public class TransferDTO extends TransactionDTO{
+public class TransferDTO extends TransactionDTO{ //Falta AccountDTO CREOOO
     
     private Account destination;
 
