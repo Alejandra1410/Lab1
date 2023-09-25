@@ -1,5 +1,4 @@
 package Cards;
-
 /**
  *
  * @author abiga
@@ -11,7 +10,6 @@ public abstract class Card {//implements StatusControl
     public String getNumber() {
         return number;
     }
-
     public boolean isActive() {
         return active;
     }
