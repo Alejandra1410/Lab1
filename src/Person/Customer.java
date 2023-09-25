@@ -56,6 +56,7 @@ public class Customer extends Person {
     private int calculateAge() {
          return Period.between(this.dateOfBirth.toLocalDate(), LocalDate.now()).getYears();
 }
+
     public int getAge(){
          return calculateAge();
    }
