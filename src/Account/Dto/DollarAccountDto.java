@@ -4,6 +4,8 @@
  */
 package Account.Dto;
 
+import Person.DTO.CustomerDTO;
+
 /**
  *
  * @author wendy
@@ -15,7 +17,7 @@ public class DollarAccountDto extends AccountDto{
         return exchangeRate;
     }
 
-    public DollarAccountDto(String number, double balance, CustomerDto customerDto, boolean active, double exchangeRate) {
+    public DollarAccountDto(String number, double balance, CustomerDTO customerDto, boolean active, double exchangeRate) {
         super(number, balance, customerDto, active);
         this.exchangeRate = exchangeRate;
     }

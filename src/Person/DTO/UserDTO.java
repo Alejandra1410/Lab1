@@ -4,7 +4,7 @@ package Person.DTO;
 
 public class UserDTO extends PersonDTO {
      private String userName;
-    private int password;
+     private int password;
 
     
     public String getUserName() {
@@ -15,7 +15,7 @@ public class UserDTO extends PersonDTO {
         return password;
     }
     
-    public UserDTO(String userName, int password, String id, String name) {
+    public UserDTO(String id,String name,String userName, int password ) {
         super(id, name);
         this.userName = userName;
         this.password = password;

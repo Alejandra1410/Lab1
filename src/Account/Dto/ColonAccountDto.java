@@ -1,7 +1,8 @@
 
 package Account.Dto;
 
-import Account.Dto.AccountDto;
+import Person.DTO.CustomerDTO;
+
 
 /**
  *
@@ -9,8 +10,8 @@ import Account.Dto.AccountDto;
  */
 public class ColonAccountDto extends AccountDto {
 
-    public ColonAccountDto (String number, double balance, Object customerDto, boolean active) {
-        super(number, balance, customerDto, active);
+    public ColonAccountDto (String number, double balance, CustomerDTO customerDTO, boolean active) {
+        super(number, balance, customerDTO, active);
     }
     
    

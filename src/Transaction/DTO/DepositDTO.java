@@ -4,6 +4,9 @@
  */
 package Transaction.DTO;
 
+import Account.Dto.AccountDto;
+import java.sql.Date;
+
 
 /**
  *
@@ -11,7 +14,10 @@ package Transaction.DTO;
  */
 public class DepositDTO extends TransactionDTO { //Falta AccountDTO CREOOO
 
-     public DepositDTO(double amount, Account source) {
-        super(amount, source);
+    public DepositDTO(double amount, AccountDto source, Date date) {
+        super(amount, source, date);
     }
+
+     
+     
 }

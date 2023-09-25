@@ -1,19 +1,23 @@
 
 package Transaction.DTO;
 
-import Account.Account;
+
+import Account.Dto.AccountDto;
+import java.sql.Date;
 
 /**
  *
  * @author ekard
  */
-public class TransferDTO extends TransactionDTO{ //Falta AccountDTO CREOOO
+public class TransferDTO extends TransactionDTO{
     
-    private Account destination;
+    private AccountDto destination;
 
-    public TransferDTO(double amount, Account source, Account destination) {
-        super(amount, source);
+    public TransferDTO(AccountDto destination, double amount, AccountDto source, Date date) {
+        super(amount, source, date);
         this.destination = destination;
     }
+
+    
 
 }

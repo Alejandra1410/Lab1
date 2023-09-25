@@ -1,5 +1,8 @@
 
 package Account.Dto;
+
+import Person.DTO.CustomerDTO;
+
 /**
  *
  * @author Emerson
@@ -9,7 +12,7 @@ package Account.Dto;
 public abstract class AccountDto {
     private String number;
     private double balance;
-    private CustomerDto customerDto;
+    private CustomerDTO customerDto;
     private boolean active;
 
     public String getNumber() {
@@ -20,7 +23,7 @@ public abstract class AccountDto {
         return balance;
     }
 
-    public CustomerDto getCustomerDto() {
+    public CustomerDTO getCustomerDto() {
         return customerDto;
     }
 
@@ -28,7 +31,7 @@ public abstract class AccountDto {
         return active;
     }
 
-    public AccountDto(String number, double balance, CustomerDto customerDto, boolean active) {
+    public AccountDto(String number, double balance, CustomerDTO customerDto, boolean active) {
         this.number = number;
         this.balance = balance;
         this.customerDto = customerDto;

@@ -4,15 +4,19 @@
  */
 package Transaction.DTO;
 
-import Account.Account;
+import Account.Dto.AccountDto;
+import java.sql.Date;
+
 
 /**
  *
  * @author ekard
  */
 public class WithdrawalDTO extends TransactionDTO { //Falta AccountDTO CREOOO
-    
-    public WithdrawalDTO(double amount, Account source) {
-        super(amount, source);
+
+    public WithdrawalDTO(double amount, AccountDto source, Date date) {
+        super(amount, source, date);
     }
+    
+    
 }

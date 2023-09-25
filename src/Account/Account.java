@@ -3,7 +3,7 @@ package Account;
 
 import Person.Customer;
 
-public abstract class Account {
+public abstract class Account{
     private String number;
     private double balance;
     private Customer customer;

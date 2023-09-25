@@ -33,8 +33,6 @@ public class CustomerDTO extends Person {
     public String getEmail() {
         return email;
     }
-    //public int getAge(){
-         //return calculateAge();
-   //}
+   
 }
   

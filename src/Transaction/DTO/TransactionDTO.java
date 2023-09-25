@@ -4,19 +4,19 @@
  */
 package Transaction.DTO;
 
-import Account.Account;
+import Account.Dto.AccountDto;
 import java.sql.Date;
 
 public class TransactionDTO {
     private double amount;
-    private Account source;
+    private AccountDto source;
     private Date date;
 
     public double getAmount() {
         return amount;
     }
 
-    public Account getSource() {
+    public AccountDto getSource() {
         return source;
     }
 
@@ -24,7 +24,7 @@ public class TransactionDTO {
         return date;
     }
 
-    public TransactionDTO(double amount, Account source, Date date) {
+    public TransactionDTO(double amount, AccountDto source, Date date) {
         this.amount = amount;
         this.source = source;
         this.date = date;

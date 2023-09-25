@@ -2,7 +2,7 @@
 package Person.DAOS;
 
 import Dao.Dao;
-import Person.Customer;
+import Person.DTO.CustomerDTO;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,23 +10,23 @@ import java.util.List;
  *
  * @author Emerson
  */
-public class CustomerDaoList implements Dao<CustomerDto>{
-    private ArrayList<CustomerDto> customersList;
+public class CustomerDaoList implements Dao<CustomerDTO>{
+    private ArrayList<CustomerDTO> customersList;
 
     public CustomerDaoList() {
      customersList = new ArrayList();
     }
 
     @Override
-    public boolean create(CustomerDto customer) {
+    public boolean create(CustomerDTO customer) {
     if(customer == null ) return false; 
     customersList.add(customer);
     return true;
     }
 
     @Override
-    public Customer read(String id) {
-        for (CustomerDto customer : customersList) {
+    public CustomerDTO read(String id) {
+        for (CustomerDTO customer : customersList) {
          if (customer.getId().equals(id)) {
             return customer;
  } 
@@ -34,17 +34,17 @@ public class CustomerDaoList implements Dao<CustomerDto>{
     }
 
     @Override
-    public List<Customer> readAll() {
-        return new ArrayList<CustomerDto>(customersList);
+    public List<CustomerDTO> readAll() {
+        return new ArrayList<CustomerDTO>(customersList);
     }
 
     @Override
-    public boolean update(CustomerDto customer) {
+    public boolean update(CustomerDTO customer) {
         return this.create(customer);
     }
 
     @Override
-    public boolean delete(CustomerDto customer) {
+    public boolean delete(CustomerDTO customer) {
         return customersList.remove(customer);
     }
     

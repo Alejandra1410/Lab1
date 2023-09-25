@@ -11,7 +11,9 @@ public class UserConsoleView implements View<User> {
 
     @Override
     public void display(User user) {
-        System.out.println(user);
+        System.out.println("Id;"+user.getId());
+        System.out.println("Nombre;"+user.getName());
+        System.out.println("Nombre de usuario;"+user.getUserName());
     }
 
     @Override
