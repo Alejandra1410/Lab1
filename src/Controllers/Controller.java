@@ -4,10 +4,13 @@
  */
 package Controllers;
 
+import Cruds.Crud;
+
 /**
  *
  * @author wendy
  */
-public interface Controller<Class> {
-    public void add(Class obj);
+public interface Controller<Class> extends Crud<Class>{
+  //OPERACIONES CRUD 
+    //MÉTODOS ADICIONALES
 }

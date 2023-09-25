@@ -1,12 +1,7 @@
 package Dao;
 
-import java.util.List;
+import Cruds.Crud;
 
-public interface Dao<Class>{
-    public boolean create(Class obj);
-    public Class read(String id);
-    public List <Class> readAll();
-    public boolean update(Class obj);
-    public boolean delete(Class obj);
+public interface Dao<Class> extends Crud<Class>{
     
 }
