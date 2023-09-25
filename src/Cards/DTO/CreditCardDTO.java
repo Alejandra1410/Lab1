@@ -1,10 +1,12 @@
-package Cards;
+package Cards.DTO;
+
+import Cards.*;
 
 /**
  *
  * @author abiga
  */
-public class CreditCard extends Card {
+public class CreditCardDTO extends CardDTO {
  private double balance;
  private double creditLimit;
  private static double interestRate;
@@ -21,27 +23,9 @@ public class CreditCard extends Card {
         return interestRate;
     }
 
-    public CreditCard(double balance, double creditLimit, String number, boolean active) {
+    public CreditCardDTO(double balance, double creditLimit, String number, boolean active) {
         super(number, active);
         this.balance = balance;
         this.creditLimit = creditLimit;
     }
-    public boolean makePayment(double amount) {
-    if (isActive() && amount > 0) {
-        balance -= amount;
-        return true;
-    }
-    return false;
-    }
-    
-    @Override
-    public boolean makePurchase(double amount) {
-     if (isActive() && amount > 0) {
-        if (balance + amount <= creditLimit) {
-         balance += amount; 
-            return true; 
-        }
-    }
-    return false; 
-         }
-    }
+}
