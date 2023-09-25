@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
-<<<<<<< HEAD
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/abiga/OneDrive/Escritorio/Lab1/src/Dao/Dao.java</file>
+            <file>file:/C:/Users/abiga/OneDrive/Escritorio/Lab1/src/Cards/CreditCard.java</file>
+            <file>file:/C:/Users/abiga/OneDrive/Escritorio/Lab1/src/Person/DAOS/UserDaoList.java</file>
+        </group>
     </open-files>
-=======
->>>>>>> b632492f43fce7019773096bcc62ba129adefce0
 </project-private>
