@@ -5,11 +5,12 @@
 package Tests;
 
 import Controllers.Controller;
-import Controllers.Pesons.UserController;
+import Controllers.Persons.UserController;
 import Dao.Dao;
 import Person.DAOS.UserDaoList;
 import Person.User;
 import Person.View.UserConsoleView;
+import Person.View.UserFrmView;
 import Views.View;
 
 /**
@@ -24,19 +25,20 @@ public class Test {
     public static void main(String[] args) {
         Dao userDao = new UserDaoList();
         
-        View userView = new UserConsoleView();
+        UserFrmView userView = new UserFrmView();
+        userView.setVisible(true);
         
         Controller userController = new UserController(userView,userDao);
         
-        User user1 = new User("1","Juena","JJ","123");
-        User user2 = new User("2","Flipe","FF","xyz");
-        User user3 = new User("3","Ale","AA","123456");
+        User user1 = new User("1","Juana","JJ","123");
+        User user2 = new User("2","Felipe","FF","xyz");
+        User user3 = new User("1","Ale","AA","123456");
         
         userController.create(user1);
         userController.create(user2);
         userController.create(user3);
         
-        userController.read("3");
+        userController.read("2");
 
 
     }

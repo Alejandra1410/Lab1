@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Controllers.Pesons;
+package Controllers.Persons;
 
 import Controllers.Controller;
 import Dao.Dao;
@@ -27,7 +27,7 @@ public class UserController implements Controller<User> {
     @Override
     public boolean create(User user) {
         if (dao.read(user.getId()) != null){
-            view.displayMessage("Id de usuario dupicado");
+            view.displayMessage("Id de usuario duplicado");
             return false;
         }else{
             //Validad integridad
