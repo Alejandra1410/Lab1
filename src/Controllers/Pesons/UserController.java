@@ -9,6 +9,7 @@ import Dao.Dao;
 import Person.DTO.UserDTO;
 import Person.User;
 import Views.View;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -58,20 +59,37 @@ public class UserController implements Controller<User> {
 
     @Override
     public List<User> readAll() {
-        return null;
+List<User> userList = new ArrayList<>();
+    List<UserDTO> userDTOs = dao.readAll();
+    for (UserDTO userDto : userDTOs) {
+        User user = new User(userDto.getId(), userDto.getName(), userDto.getUserName(), userDto.getPassword());
+        userList.add(user);
+    }
 
+    return userList;
        }
 
     @Override
     public boolean update(User user) {
-        return false;
+     UserDTO userExists = (UserDTO) dao.read(user.getId());
+     if (userExists==null) {
+     view.displayMessage("No se puede actualizar el usuario. Usuario no existente.");
+     return false;
     }
+    UserDTO userDto = new UserDTO(user.getId(), user.getName(), user.getUserName(), user.getPassword());
+    return dao.update(userDto);
+    }
+    
 
     @Override
     public boolean delete(User user) {
-                return false;
-
-    }
-    
+     UserDTO userExists = (UserDTO) dao.read(user.getId());
+        if (userExists==null) {
+        view.displayMessage("No se puede eliminar el usuario. Usuario no existente.");
+            return false;
+        }
+     UserDTO userDto = new UserDTO(user.getId(), user.getName(), user.getUserName(), user.getPassword());
+     return dao.delete(userDto);
+    }  
 }
 
