@@ -37,5 +37,9 @@ public class ColonAccount extends Account {
         }
         return false;
     }
+    @Override
+    public ColonAccount clone() {
+        return (ColonAccount) super.clone();
+    }
 }
 

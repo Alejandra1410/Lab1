@@ -76,4 +76,17 @@ public abstract class Account implements StatusControl{
             return false;
         }
     }
+   
+    @Override
+    public Account clone() {
+    try {
+        // Utiliza el constructor de copia para crear un nuevo objeto con los mismos valores
+        Account clonedAccount = (Account) super.clone();
+        return clonedAccount;
+    } catch (CloneNotSupportedException e) {
+        throw new RuntimeException("Error al clonar la cuenta");
+    }
+ }
 }
+
+
