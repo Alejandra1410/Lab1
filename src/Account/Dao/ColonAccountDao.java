@@ -49,15 +49,9 @@ public class ColonAccountDao implements Dao<ColonAccountDto>{
 
     @Override
     public boolean update(ColonAccountDto obj) {
-<<<<<<< HEAD
         return create(obj);
     }
-
-=======
-    return create(obj);
-    }
-    
->>>>>>> 547229c14a2cafcd26dbd51dff4c69421ea47637
+  
     @Override
     public boolean delete(ColonAccountDto accountNumber) {
         return listColonAccount.remove(accountNumber);

@@ -4,9 +4,6 @@ import Cards.DTO.CreditCardDTO;
 import Dao.Dao;
 import java.util.HashMap;
 import java.util.List;
-
-<<<<<<< HEAD
-<<<<<<< HEAD
 /**
  *
  * @author abiga
@@ -14,8 +11,6 @@ import java.util.List;
 public class CreditCardDaoList implements Dao<CreditCardDTO>{
      private HashMap<String,CreditCardDTO> CreditCardList;
      private static CreditCardDaoList instanceCreditCard;
-     
-     
       private CreditCardDaoList(){
        CreditCardList=new HashMap();
     }
@@ -25,28 +20,7 @@ public class CreditCardDaoList implements Dao<CreditCardDTO>{
           }
           return instanceCreditCard;
       }
-=======
 
-
-public class CreditCardDaoList implements Dao<CreditCardDTO> {
-    private HashMap<String, CreditCardDTO> creditCardList;
-   
-    private CreditCardDaoList() {
-        creditCardList = new HashMap<>();
-    }
-
->>>>>>> 6da74d3561ce54ca6db14aaedf9eccb7322d0416
-=======
-
-
-public class CreditCardDaoList implements Dao<CreditCardDTO> {
-    private HashMap<String, CreditCardDTO> creditCardList;
-   
-    private CreditCardDaoList() {
-        creditCardList = new HashMap<>();
-    }
-
->>>>>>> 547229c14a2cafcd26dbd51dff4c69421ea47637
     @Override
     public boolean create(CreditCardDTO obj) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

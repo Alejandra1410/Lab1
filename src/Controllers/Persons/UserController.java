@@ -1,10 +1,5 @@
-<<<<<<< HEAD:src/Controllers/Pesons/UserController.java
-package Controllers.Pesons;
-=======
 
 package Controllers.Persons;
->>>>>>> 547229c14a2cafcd26dbd51dff4c69421ea47637:src/Controllers/Persons/UserController.java
-
 import Controllers.Controller;
 import Dao.Dao;
 import Person.DTO.UserDTO;
