@@ -1,4 +1,9 @@
+<<<<<<< HEAD:src/Controllers/Pesons/UserController.java
 package Controllers.Pesons;
+=======
+
+package Controllers.Persons;
+>>>>>>> 547229c14a2cafcd26dbd51dff4c69421ea47637:src/Controllers/Persons/UserController.java
 
 import Controllers.Controller;
 import Dao.Dao;
@@ -24,7 +29,7 @@ public class UserController implements Controller<User> {
     @Override
     public boolean create(User user) {
         if (dao.read(user.getId()) != null){
-            view.displayMessage("Id de usuario dupicado");
+            view.displayMessage("Id de usuario duplicado");
             return false;
         }else{
             //Validad integridad
