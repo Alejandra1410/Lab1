@@ -2,8 +2,9 @@
 package Account;
 
 import Person.Customer;
+import StatusControl.StatusControl;
 
-public abstract class Account{
+public abstract class Account implements StatusControl{
     private String number;
     private double balance;
     private Customer customer;
@@ -21,9 +22,18 @@ public abstract class Account{
     public Customer getCustomer() {
         return customer;
     }
-
-    public boolean isActive() {
+      public boolean isActive() {
         return active;
+    }
+    
+      @Override
+    public void activate() {
+        active = true;
+    }
+
+    @Override
+    public void deactivate() {
+        active = false;
     }
 
     public Account(String number, double balance, Customer customer) {

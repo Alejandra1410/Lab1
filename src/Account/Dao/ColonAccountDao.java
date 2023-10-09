@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Account.Dao;
 
 import Account.Dto.ColonAccountDto;
@@ -15,9 +11,17 @@ import java.util.List;
  */
 public class ColonAccountDao implements Dao<ColonAccountDto>{
     private ArrayList<ColonAccountDto> listColonAccount; 
+    private static ColonAccountDao instance; 
 
-    public ColonAccountDao() {
+    private ColonAccountDao() {
         listColonAccount = new ArrayList();
+    }
+    
+     public static ColonAccountDao getInstance() {
+        if (instance == null) {
+            instance = new ColonAccountDao();
+        }
+        return instance;
     }
 
     @Override
@@ -43,15 +47,14 @@ public class ColonAccountDao implements Dao<ColonAccountDto>{
        return new ArrayList<ColonAccountDto>(listColonAccount);
      }
 
-//    @Override
-//    public boolean update(ColonAccountDto obj) {
-//        // PENDIENTE PREGUNTAR A JP 
-//    }
+    @Override
+    public boolean update(ColonAccountDto obj) {
+        return create(obj);
+    }
 
     @Override
     public boolean delete(ColonAccountDto accountNumber) {
         return listColonAccount.remove(accountNumber);
     }
-    
     
 }

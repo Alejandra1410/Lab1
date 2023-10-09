@@ -5,16 +5,15 @@ import Dao.Dao;
 import java.util.HashMap;
 import java.util.List;
 
-/**
- *
- * @author abiga
- */
-public class CreditCardDaoList implements Dao<CreditCardDTO>{
-     private HashMap<String,CreditCardDTO> CreditCardList;
 
-      public CreditCardDaoList(){
-       CreditCardList=new HashMap();
+
+public class CreditCardDaoList implements Dao<CreditCardDTO> {
+    private HashMap<String, CreditCardDTO> creditCardList;
+   
+    private CreditCardDaoList() {
+        creditCardList = new HashMap<>();
     }
+
     @Override
     public boolean create(CreditCardDTO obj) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -39,5 +38,4 @@ public class CreditCardDaoList implements Dao<CreditCardDTO>{
     public boolean delete(CreditCardDTO obj) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
 }

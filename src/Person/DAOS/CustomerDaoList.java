@@ -12,11 +12,17 @@ import java.util.List;
  */
 public class CustomerDaoList implements Dao<CustomerDTO>{
     private ArrayList<CustomerDTO> customersList;
+    private static CustomerDaoList instance; 
 
-    public CustomerDaoList() {
-     customersList = new ArrayList();
+    private CustomerDaoList() {
+        customersList = new ArrayList<>();
     }
-
+    public static CustomerDaoList getInstance() {
+        if (instance == null) {
+            instance = new CustomerDaoList();
+        }
+        return instance;
+    }
     @Override
     public boolean create(CustomerDTO customer) {
     if(customer == null ) return false; 

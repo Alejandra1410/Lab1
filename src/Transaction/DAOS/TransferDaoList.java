@@ -13,35 +13,50 @@ import java.util.List;
  *
  * @author ekard
  */
-public class TransferDaoList implements Dao<TransferDTO>{
-   private HashMap<String,TransferDTO> TransferDaoLis;
+  public class TransferDaoList implements Dao<TransferDTO>{
+      private HashMap<String,TransferDTO> TransferDaoList;
+      private static TransferDaoList instance; // Instancia única
 
-      public TransferDaoList(){
-       TransferDaoLis=new HashMap();
+    private TransferDaoList() {
+        TransferDaoList = new HashMap<>();
+    }
+
+   
+    public static TransferDaoList getInstance() {
+        if (instance == null) {
+            instance = new TransferDaoList();
+        }
+        return instance;
     }
     @Override
-    public boolean create(TransferDTO obj) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public boolean create(TransferDTO transfer) {
+       
+       return false;
+       
     }
 
     @Override
     public TransferDTO read(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return TransferDaoList.get(id);
     }
 
     @Override
     public List<TransferDTO> readAll() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       return null;
+       // return new ArrayList<>(TransferDaoLis.values());
+       
     }
 
     @Override
-    public boolean update(TransferDTO obj) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public boolean update(TransferDTO updatedTransfer) { //Preguntar a JEIPI
+       
+       return false;
+       
     }
 
     @Override
-    public boolean delete(TransferDTO obj) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    public boolean delete(TransferDTO transfer) { //Preguntar a JEIPI
+    return false;
     
+    }
 }

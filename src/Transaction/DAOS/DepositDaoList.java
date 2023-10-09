@@ -4,7 +4,6 @@
  */
 package Transaction.DAOS;
 
-import Cards.DTO.CreditCardDTO;
 import Dao.Dao;
 import Transaction.DTO.DepositDTO;
 import java.util.HashMap;
@@ -15,34 +14,69 @@ import java.util.List;
  * @author ekard
  */
 public class DepositDaoList implements Dao<DepositDTO>{
-    private HashMap<String,DepositDTO> DepositDaoList;
-
-      public DepositDaoList(){
-       DepositDaoList=new HashMap();
-    }
-    @Override
-    public boolean create(DepositDTO obj) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    private HashMap<String,DepositDTO> depositList;
+    private static DepositDaoList instance;
+    private DepositDaoList() {
+        depositList = new HashMap<>();
     }
 
+    public static DepositDaoList getInstance() {
+        if (instance == null) {
+            instance = new DepositDaoList();
+        }
+        return instance;
+    
+    }
+
     @Override
-    public DepositDTO read(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public boolean create(DepositDTO deposit) {
+        if (deposit == null)
+            return false;
+
+        String source = deposit.getSource().getNumber();
+
+        if (!depositList.containsKey(source)) {
+            depositList.put(source, deposit);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public DepositDTO read(String source) {
+        return depositList.get(source);
     }
 
     @Override
     public List<DepositDTO> readAll() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return null;
+//        return new ArrayList<>(depositList.values());
     }
 
     @Override
-    public boolean update(DepositDTO obj) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public boolean update(DepositDTO obj) { //Preguntar a JP si es necesario un update en Deposit
+        return create(obj);
+//        if (updatedDeposit == null)
+//            return false;
+//
+//        String source = updatedDeposit.getSource().getNumber(); 
+//
+//        if (depositList.containsKey(source)) {
+//            // Reemplazar la transacción existente con la actualizada
+//            depositList.put(source, updatedDeposit);
+//            return true;
+//        } else {
+//            return false; // La transacción a actualizar no existe
+//        }
     }
 
     @Override
-    public boolean delete(DepositDTO obj) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public boolean delete(DepositDTO deposit) {
+        if (deposit == null)
+            return false;
+
+        String source = deposit.getSource().getNumber();
+        return depositList.remove(source) != null;
     }
-    
 }
