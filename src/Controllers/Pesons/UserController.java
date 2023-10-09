@@ -77,7 +77,11 @@ List<User> userList = new ArrayList<>();
      return false;
     }
     UserDTO userDto = new UserDTO(user.getId(), user.getName(), user.getUserName(), user.getPassword());
-    return dao.update(userDto);
+        if (dao.update(userDto)) {
+            view.displayMessage("Usuario actualizado correctamente.");
+            return true;
+        }
+        return false;
     }
     
 
@@ -87,9 +91,11 @@ List<User> userList = new ArrayList<>();
         if (userExists==null) {
         view.displayMessage("No se puede eliminar el usuario. Usuario no existente.");
             return false;
-        }
-     UserDTO userDto = new UserDTO(user.getId(), user.getName(), user.getUserName(), user.getPassword());
+        }else{
+             UserDTO userDto = new UserDTO(user.getId(), user.getName(), user.getUserName(), user.getPassword());
      return dao.delete(userDto);
+        }
+   
     }  
 }
 

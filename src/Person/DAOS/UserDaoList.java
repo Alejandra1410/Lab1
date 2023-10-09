@@ -10,11 +10,16 @@ import java.util.List;
  */
 public class UserDaoList implements Dao<UserDTO> {
    private HashMap<String,UserDTO> userList;
-
-    public UserDaoList(){
+  private static UserDaoList instanceUserDao;
+    private UserDaoList(){
        userList=new HashMap();
     }
-   
+   public static UserDaoList getInstance(){
+       if (instanceUserDao==null) {
+         instanceUserDao=new UserDaoList();
+       }
+       return instanceUserDao;
+   }
     @Override
     public boolean create(UserDTO user) {
         if (user==null) return false;

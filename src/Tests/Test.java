@@ -22,7 +22,7 @@ public class Test {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Dao userDao = new UserDaoList();
+        Dao userDao = UserDaoList.getInstance();
         
         View userView = new UserConsoleView();
         
