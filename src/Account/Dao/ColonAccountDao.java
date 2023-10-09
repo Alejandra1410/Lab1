@@ -43,10 +43,10 @@ public class ColonAccountDao implements Dao<ColonAccountDto>{
        return new ArrayList<ColonAccountDto>(listColonAccount);
      }
 
-//    @Override
-//    public boolean update(ColonAccountDto obj) {
-//        // PENDIENTE PREGUNTAR A JP 
-//    }
+    @Override
+    public boolean update(ColonAccountDto obj) {
+                return false; 
+   }
 
     @Override
     public boolean delete(ColonAccountDto accountNumber) {
