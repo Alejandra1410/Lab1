@@ -51,7 +51,7 @@ public class ColonAccountDao implements Dao<ColonAccountDto>{
     public boolean update(ColonAccountDto obj) {
         return create(obj);
     }
-
+  
     @Override
     public boolean delete(ColonAccountDto accountNumber) {
         return listColonAccount.remove(accountNumber);
