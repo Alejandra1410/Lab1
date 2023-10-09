@@ -11,33 +11,63 @@ import java.util.List;
  */
 public class DebitCardDaoList  implements Dao<DebitCardDTO>{
      private HashMap<String,DebitCardDTO> DebitCardList;
+     private static DebitCardDaoList instance; // Instancia única
 
-      public DebitCardDaoList(){
-       DebitCardList=new HashMap();
-    } 
+    private DebitCardDaoList() {
+        DebitCardList = new HashMap<>();
+    }
 
-    @Override
-    public boolean create(DebitCardDTO obj) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public static DebitCardDaoList getInstance() {
+        if (instance == null) {
+            instance = new DebitCardDaoList();
+        }
+        return instance;
+    }
+     @Override
+    public boolean create(DebitCardDTO debitCard) {
+        if (debitCard == null)
+            return false;
+        String debitCardNumber = debitCard.getNumber();
+
+        if (!DebitCardList.containsKey(debitCardNumber)) {
+            DebitCardList.put(debitCardNumber, debitCard);
+            return true;
+        } else {
+            return false; 
+        }
     }
 
     @Override
-    public DebitCardDTO read(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public DebitCardDTO read(String cardNumber) {
+        return DebitCardList.get(cardNumber);
     }
 
     @Override
     public List<DebitCardDTO> readAll() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+     // return new ArrayList<>(debitCardList.values());
+         return null;
     }
 
     @Override
-    public boolean update(DebitCardDTO obj) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public boolean update(DebitCardDTO obj) { //Preguntar a JP si es necesario el update
+        return create(obj);
+//        if (updatedDebitCard == null)
+//            return false;
+//        String updatedCardNumber = updatedDebitCard.getNumber();
+//        if (DebitCardList.containsKey(updatedCardNumber)) {
+//            DebitCardList.put(updatedCardNumber, updatedDebitCard);
+//            return true;
+//        } else {
+//            return false; // La tarjeta a actualizar no existe
+        
     }
 
     @Override
-    public boolean delete(DebitCardDTO obj) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public boolean delete(DebitCardDTO debitCard) {
+        if (debitCard == null)
+            return false;
+
+        String cardNumber = debitCard.getNumber();
+        return DebitCardList.remove(cardNumber) != null;
     }
 }

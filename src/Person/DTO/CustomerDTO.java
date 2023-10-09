@@ -2,8 +2,6 @@ package Person.DTO;
 
 import Person.Person;
 import java.sql.Date;
-import java.time.LocalDate;
-import java.time.Period;
 
 /**
  *

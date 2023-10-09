@@ -1,6 +1,6 @@
 package Cards.DTO;
 
-import Cards.*;
+
 
 /**
  *
