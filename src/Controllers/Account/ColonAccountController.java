@@ -6,9 +6,6 @@ import Dao.Dao;
 import Views.View;
 import java.util.List;
 
-/**
- * Abiga
- */
 public class ColonAccountController implements Controller<ColonAccountDao> {
     private View view;
     private Dao<ColonAccountDao> dao;
@@ -30,7 +27,7 @@ public class ColonAccountController implements Controller<ColonAccountDao> {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return false;  
+            return false;
         }
     }
 
@@ -39,14 +36,14 @@ public class ColonAccountController implements Controller<ColonAccountDao> {
         try {
             ColonAccountDao accountDao = dao.read(accountNumber);
             if (accountDao != null) {
-                view.display(accountDao); 
+                view.display(accountDao);
             } else {
                 view.displayMessage("Cuenta no encontrada");
             }
             return accountDao;
         } catch (Exception e) {
             e.printStackTrace();
-            return null; 
+            return null;
         }
     }
 
@@ -77,7 +74,6 @@ public class ColonAccountController implements Controller<ColonAccountDao> {
         }
     }
 
-
     @Override
     public boolean delete(ColonAccountDao accountDao) {
         try {
@@ -90,7 +86,7 @@ public class ColonAccountController implements Controller<ColonAccountDao> {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return false; 
+            return false;
         }
     }
 }

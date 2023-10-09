@@ -10,9 +10,6 @@ import Transaction.DAOS.WithdrawalDaoList;
 import Views.View;
 import java.util.List;
 
-/**
- * Controlador para objetos WithdrawalDaoList.
- */
 public class WithdrawalDaoListController implements Controller<WithdrawalDaoList> {
     private View view;
     private Dao<WithdrawalDaoList> dao;
@@ -33,7 +30,6 @@ public class WithdrawalDaoListController implements Controller<WithdrawalDaoList
                 return false;
             }
         } catch (Exception e) {
-            e.printStackTrace();
             return false; 
         }
     }
@@ -49,7 +45,6 @@ public class WithdrawalDaoListController implements Controller<WithdrawalDaoList
             }
             return withdrawalDaoList;
         } catch (Exception e) {
-            e.printStackTrace();
             return null; 
         }
     }
@@ -60,7 +55,6 @@ public class WithdrawalDaoListController implements Controller<WithdrawalDaoList
             List<WithdrawalDaoList> withdrawalDaoLists = dao.readAll();
             return withdrawalDaoLists;
         } catch (Exception e) {
-            e.printStackTrace();
             return null; 
         }
     }
@@ -76,7 +70,6 @@ public class WithdrawalDaoListController implements Controller<WithdrawalDaoList
                 return false;
             }
         } catch (Exception e) {
-            e.printStackTrace();
             return false;
         }
     }
@@ -92,7 +85,6 @@ public class WithdrawalDaoListController implements Controller<WithdrawalDaoList
                 return false;
             }
         } catch (Exception e) {
-            e.printStackTrace();
             return false; 
         }
     }

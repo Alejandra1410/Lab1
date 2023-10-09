@@ -6,9 +6,6 @@ import Dao.Dao;
 import Views.View;
 import java.util.List;
 
-/**
- * @author: Abiga
- */
 public class CreditCardListController implements Controller<CreditCardDaoList> {
     private View view;
     private Dao<CreditCardDaoList> dao;
@@ -28,8 +25,8 @@ public class CreditCardListController implements Controller<CreditCardDaoList> {
                 view.displayMessage("Error al agregar la tarjeta de crédito");
                 return false;
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception ex) {
+            view.displayMessage("Error al agregar la tarjeta de crédito: " + ex.getMessage());
             return false;
         }
     }
@@ -39,14 +36,14 @@ public class CreditCardListController implements Controller<CreditCardDaoList> {
         try {
             CreditCardDaoList creditCardDaoList = dao.read(id);
             if (creditCardDaoList != null) {
-                view.display(creditCardDaoList); 
+                view.display(creditCardDaoList);
             } else {
                 view.displayMessage("Tarjeta de crédito no encontrada");
             }
             return creditCardDaoList;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null; 
+        } catch (Exception ex) {
+            view.displayMessage("Error al leer la tarjeta de crédito: " + ex.getMessage());
+            return null;
         }
     }
 
@@ -55,9 +52,9 @@ public class CreditCardListController implements Controller<CreditCardDaoList> {
         try {
             List<CreditCardDaoList> creditCardDaoLists = dao.readAll();
             return creditCardDaoLists;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null; 
+        } catch (Exception ex) {
+            view.displayMessage("Error al leer todas las tarjetas de crédito: " + ex.getMessage());
+            return null;
         }
     }
 
@@ -71,9 +68,9 @@ public class CreditCardListController implements Controller<CreditCardDaoList> {
                 view.displayMessage("Error al actualizar la tarjeta de crédito");
                 return false;
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false; 
+        } catch (Exception ex) {
+            view.displayMessage("Error al actualizar la tarjeta de crédito: " + ex.getMessage());
+            return false;
         }
     }
 
@@ -87,9 +84,9 @@ public class CreditCardListController implements Controller<CreditCardDaoList> {
                 view.displayMessage("Error al eliminar la tarjeta de crédito");
                 return false;
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false; 
+        } catch (Exception ex) {
+            view.displayMessage("Error al eliminar la tarjeta de crédito: " + ex.getMessage());
+            return false;
         }
     }
 }

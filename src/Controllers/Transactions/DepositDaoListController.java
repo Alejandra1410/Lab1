@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Controllers.Transactions;
 
 import Controllers.Controller;
@@ -10,9 +6,6 @@ import Transaction.DAOS.DepositDaoList;
 import Views.View;
 import java.util.List;
 
-/**
- * @author ekard
- */
 public class DepositDaoListController implements Controller<DepositDaoList> {
     private View view;
     private Dao<DepositDaoList> dao;
@@ -33,7 +26,6 @@ public class DepositDaoListController implements Controller<DepositDaoList> {
                 return false;
             }
         } catch (Exception e) {
-            e.printStackTrace();
             return false; 
         }
     }
@@ -49,7 +41,6 @@ public class DepositDaoListController implements Controller<DepositDaoList> {
             }
             return depositDaoList;
         } catch (Exception e) {
-            e.printStackTrace();
             return null; 
         }
     }
@@ -60,7 +51,6 @@ public class DepositDaoListController implements Controller<DepositDaoList> {
             List<DepositDaoList> depositDaoLists = dao.readAll();
             return depositDaoLists;
         } catch (Exception e) {
-            e.printStackTrace();
             return null; 
         }
     }
@@ -76,7 +66,6 @@ public class DepositDaoListController implements Controller<DepositDaoList> {
                 return false;
             }
         } catch (Exception e) {
-            e.printStackTrace();
             return false; 
         }
     }
@@ -92,7 +81,6 @@ public class DepositDaoListController implements Controller<DepositDaoList> {
                 return false;
             }
         } catch (Exception e) {
-            e.printStackTrace();
             return false; 
         }
     }

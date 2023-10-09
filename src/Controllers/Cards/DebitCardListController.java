@@ -6,9 +6,6 @@ import Dao.Dao;
 import Views.View;
 import java.util.List;
 
-/**
- * @author abiga
- */
 public class DebitCardListController implements Controller<DebitCardDaoList> {
     private View view;
     private Dao<DebitCardDaoList> dao;
@@ -29,8 +26,7 @@ public class DebitCardListController implements Controller<DebitCardDaoList> {
                 return false;
             }
         } catch (Exception e) {
-            e.printStackTrace();
-            return false; 
+            return false;
         }
     }
 
@@ -39,14 +35,13 @@ public class DebitCardListController implements Controller<DebitCardDaoList> {
         try {
             DebitCardDaoList debitCardList = dao.read(id);
             if (debitCardList != null) {
-                view.display(debitCardList); 
+                view.display(debitCardList);
             } else {
                 view.displayMessage("Lista de tarjetas de débito no encontrada");
             }
             return debitCardList;
         } catch (Exception e) {
-            e.printStackTrace();
-            return null; 
+            return null;
         }
     }
 
@@ -56,8 +51,7 @@ public class DebitCardListController implements Controller<DebitCardDaoList> {
             List<DebitCardDaoList> debitCardLists = dao.readAll();
             return debitCardLists;
         } catch (Exception e) {
-            e.printStackTrace();
-            return null; 
+            return null;
         }
     }
 
@@ -72,8 +66,7 @@ public class DebitCardListController implements Controller<DebitCardDaoList> {
                 return false;
             }
         } catch (Exception e) {
-            e.printStackTrace();
-            return false; 
+            return false;
         }
     }
 
@@ -88,8 +81,7 @@ public class DebitCardListController implements Controller<DebitCardDaoList> {
                 return false;
             }
         } catch (Exception e) {
-            e.printStackTrace();
-            return false; // Hubo un error en la eliminación
+            return false;
         }
     }
 }
