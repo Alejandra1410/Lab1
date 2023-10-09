@@ -1,9 +1,12 @@
 package Cards;
+
+import StatusControl.StatusControl;
+
 /**
  *
  * @author abiga
  */
-public abstract class Card {//implements StatusControl
+public abstract class Card implements StatusControl {
     private String number;
     private boolean active;
 
@@ -23,10 +26,12 @@ public abstract class Card {//implements StatusControl
     public Card(String number) {
         this.number = number;
     }
+    @Override
     public void activate() {
     this.active = true; 
    }
 
+    @Override
    public void deactivate() {
    this.active = false;
    }

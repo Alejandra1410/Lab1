@@ -15,9 +15,17 @@ import java.util.List;
  */
 public class DollarAccountDao implements Dao<DollarAccountDto>{
     private ArrayList<DollarAccountDto> listDollarAccount;
+    private static DollarAccountDao instance;
 
-    public DollarAccountDao() {
+    private DollarAccountDao() {
         listDollarAccount = new ArrayList();
+    }
+    
+    public static DollarAccountDao getInstance() {
+        if (instance == null) {
+            instance = new DollarAccountDao();
+        }
+        return instance;
     }
 
     @Override
@@ -45,8 +53,9 @@ public class DollarAccountDao implements Dao<DollarAccountDto>{
     }
 
     @Override
-    public boolean update(DollarAccountDto obj) {   //-> PENDIENTE PREGUNTAR A JP
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public boolean update(DollarAccountDto obj) {  
+        return create(obj);
+        
     }
 
     @Override
@@ -55,5 +64,5 @@ public class DollarAccountDao implements Dao<DollarAccountDto>{
             return listDollarAccount.remove(dollarAccount);
         }
     return false;
-}
+  }
 }

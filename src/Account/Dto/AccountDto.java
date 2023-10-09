@@ -3,12 +3,6 @@ package Account.Dto;
 
 import Person.DTO.CustomerDTO;
 
-/**
- *
- * @author Emerson
- */
-//import Person.CustomerDto;
-
 public abstract class AccountDto {
     private String number;
     private double balance;

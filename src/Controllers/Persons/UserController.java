@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Controllers.Persons;
 
 import Controllers.Controller;
@@ -59,7 +56,7 @@ public class UserController implements Controller<User> {
 
     @Override
     public List<User> readAll() {
-List<User> userList = new ArrayList<>();
+    List<User> userList = new ArrayList<>();
     List<UserDTO> userDTOs = dao.readAll();
     for (UserDTO userDto : userDTOs) {
         User user = new User(userDto.getId(), userDto.getName(), userDto.getUserName(), userDto.getPassword());
