@@ -1,6 +1,7 @@
 
 package Person;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
 
@@ -10,7 +11,7 @@ public class Customer extends Person {
    private String email;
    private String address;
 
-    public Customer(Date dateOfBirth, String phone, String email, String address, String id, String name) {
+    public Customer(String name, String id,Date dateOfBirth, String phone, String email, String address) {
         super(id, name);
         this.dateOfBirth = dateOfBirth;
         this.phone = phone;
@@ -60,4 +61,8 @@ public class Customer extends Person {
     public int getAge(){
          return calculateAge();
    }
+     public String getDateOfBirthAsString() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        return dateFormat.format(dateOfBirth);
+    }
 }
