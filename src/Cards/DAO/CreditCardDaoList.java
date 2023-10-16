@@ -4,15 +4,22 @@ import Cards.DTO.CreditCardDTO;
 import Dao.Dao;
 import java.util.HashMap;
 import java.util.List;
-
-
-
-public class CreditCardDaoList implements Dao<CreditCardDTO> {
-    private HashMap<String, CreditCardDTO> creditCardList;
-   
-    private CreditCardDaoList() {
-        creditCardList = new HashMap<>();
+/**
+ *
+ * @author abiga
+ */
+public class CreditCardDaoList implements Dao<CreditCardDTO>{
+     private HashMap<String,CreditCardDTO> CreditCardList;
+     private static CreditCardDaoList instanceCreditCard;
+      private CreditCardDaoList(){
+       CreditCardList=new HashMap();
     }
+      public static CreditCardDaoList getInstance(){
+          if (instanceCreditCard==null) {
+             instanceCreditCard=new CreditCardDaoList();
+          }
+          return instanceCreditCard;
+      }
 
     @Override
     public boolean create(CreditCardDTO obj) {

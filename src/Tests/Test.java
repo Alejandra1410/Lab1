@@ -23,7 +23,7 @@ public class Test {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Dao userDao = new UserDaoList();
+        Dao userDao = UserDaoList.getInstance();
         
         UserFrmView userView = new UserFrmView();
         userView.setVisible(true);

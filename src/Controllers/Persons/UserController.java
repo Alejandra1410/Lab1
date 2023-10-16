@@ -1,6 +1,5 @@
 
 package Controllers.Persons;
-
 import Controllers.Controller;
 import Dao.Dao;
 import Person.DTO.UserDTO;
@@ -74,7 +73,11 @@ public class UserController implements Controller<User> {
      return false;
     }
     UserDTO userDto = new UserDTO(user.getId(), user.getName(), user.getUserName(), user.getPassword());
-    return dao.update(userDto);
+        if (dao.update(userDto)) {
+            view.displayMessage("Usuario actualizado correctamente.");
+            return true;
+        }
+        return false;
     }
     
 
@@ -84,9 +87,11 @@ public class UserController implements Controller<User> {
         if (userExists==null) {
         view.displayMessage("No se puede eliminar el usuario. Usuario no existente.");
             return false;
-        }
-     UserDTO userDto = new UserDTO(user.getId(), user.getName(), user.getUserName(), user.getPassword());
+        }else{
+             UserDTO userDto = new UserDTO(user.getId(), user.getName(), user.getUserName(), user.getPassword());
      return dao.delete(userDto);
+        }
+   
     }  
 }
 

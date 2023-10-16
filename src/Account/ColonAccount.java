@@ -37,5 +37,9 @@ public class ColonAccount extends Account {
         }
         return false;
     }
+    @Override
+    public ColonAccount clone() {
+        return new ColonAccount(this.getNumber(),this.getBalance(),this.getCustomer());
+    }
 }
 

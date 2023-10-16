@@ -40,11 +40,13 @@ public abstract class Account implements StatusControl{
         this.number = number;
         this.balance = balance;
         this.customer = customer;
+        this.activate();
     }
 
     public Account(String number, Customer customer) {
         this.number = number;
         this.customer = customer;
+        this.activate();
     }
     
     public Account() {
@@ -76,4 +78,12 @@ public abstract class Account implements StatusControl{
             return false;
         }
     }
+   
+    @Override
+    public Account clone() {
+        return null;
+   
+    }
 }
+
+
