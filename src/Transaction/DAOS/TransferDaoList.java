@@ -5,7 +5,9 @@
 package Transaction.DAOS;
 
 import Dao.Dao;
+import Dao.DaoTransaction;
 import Transaction.DTO.TransferDTO;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -13,7 +15,7 @@ import java.util.List;
  *
  * @author ekard
  */
-  public class TransferDaoList implements Dao<TransferDTO>{
+  public class TransferDaoList implements DaoTransaction<TransferDTO>{
       private HashMap<String,TransferDTO> TransferDaoList;
       private static TransferDaoList instance; // Instancia única
 
@@ -42,21 +44,9 @@ import java.util.List;
 
     @Override
     public List<TransferDTO> readAll() {
-       return null;
-       // return new ArrayList<>(TransferDaoLis.values());
+       return new ArrayList<>(TransferDaoList.values());
        
     }
 
-    @Override
-    public boolean update(TransferDTO updatedTransfer) { //Preguntar a JEIPI
-       
-       return false;
-       
-    }
-
-    @Override
-    public boolean delete(TransferDTO transfer) { //Preguntar a JEIPI
-    return false;
-    
-    }
+  
 }

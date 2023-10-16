@@ -14,7 +14,7 @@ public class CustomerDaoList implements Dao<CustomerDTO>{
     private ArrayList<CustomerDTO> customersList;
     private static CustomerDaoList instance; 
 
-    private CustomerDaoList() {
+    public CustomerDaoList() {
         customersList = new ArrayList<>();
     }
     public static CustomerDaoList getInstance() {
@@ -53,5 +53,7 @@ public class CustomerDaoList implements Dao<CustomerDTO>{
     public boolean delete(CustomerDTO customer) {
         return customersList.remove(customer);
     }
+
+ 
     
 }

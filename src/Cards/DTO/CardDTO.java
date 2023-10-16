@@ -1,12 +1,12 @@
 package Cards.DTO;
 
-
+import StatusControl.StatusControl;
 
 /**
  *
  * @author abiga
  */
-public abstract class CardDTO {//implements StatusControl
+public abstract class CardDTO implements StatusControl {
     private String number;
     private boolean active;
 
@@ -22,5 +22,15 @@ public abstract class CardDTO {//implements StatusControl
         this.number = number;
         this.active = active;
     
+    }
+      
+      @Override
+    public void activate() {
+        active = true;
+    }
+
+    @Override
+    public void deactivate() {
+        active = false;
     }
    }

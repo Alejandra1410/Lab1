@@ -13,9 +13,10 @@ public class DebitCard extends Card {
         return account;
     }
     
-    public DebitCard(String number, Account account) {
-        super(number);
+    public DebitCard(String number, Account account, boolean active) {
+        super(number, active);
         this.account = account;
+        
     }
     
 

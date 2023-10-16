@@ -6,11 +6,11 @@ import Dao.Dao;
 import Views.View;
 import java.util.List;
 
-public class CreditCardListController implements Controller<CreditCardDaoList> {
+public class CreditCardController implements Controller<CreditCardDaoList> {
     private View view;
     private Dao<CreditCardDaoList> dao;
 
-    public CreditCardListController(View view, Dao<CreditCardDaoList> dao) {
+    public CreditCardController(View view, Dao<CreditCardDaoList> dao) {
         this.view = view;
         this.dao = dao;
     }

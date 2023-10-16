@@ -4,8 +4,10 @@
  */
 package Transaction.DAOS;
 
-import Dao.Dao;
+
+import Dao.DaoTransaction;
 import Transaction.DTO.DepositDTO;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -13,7 +15,7 @@ import java.util.List;
  *
  * @author ekard
  */
-public class DepositDaoList implements Dao<DepositDTO>{
+public class DepositDaoList implements DaoTransaction<DepositDTO>{
     private HashMap<String,DepositDTO> depositList;
     private static DepositDaoList instance;
     private DepositDaoList() {
@@ -50,33 +52,7 @@ public class DepositDaoList implements Dao<DepositDTO>{
 
     @Override
     public List<DepositDTO> readAll() {
-        return null;
-//        return new ArrayList<>(depositList.values());
+    return new ArrayList<>(depositList.values());
     }
-
-    @Override
-    public boolean update(DepositDTO obj) { //Preguntar a JP si es necesario un update en Deposit
-        return create(obj);
-//        if (updatedDeposit == null)
-//            return false;
-//
-//        String source = updatedDeposit.getSource().getNumber(); 
-//
-//        if (depositList.containsKey(source)) {
-//            // Reemplazar la transacción existente con la actualizada
-//            depositList.put(source, updatedDeposit);
-//            return true;
-//        } else {
-//            return false; // La transacción a actualizar no existe
-//        }
-    }
-
-    @Override
-    public boolean delete(DepositDTO deposit) {
-        if (deposit == null)
-            return false;
-
-        String source = deposit.getSource().getNumber();
-        return depositList.remove(source) != null;
-    }
+  
 }

@@ -21,7 +21,7 @@ public class CreditCard extends Card {
         return interestRate;
     }
 
-    public CreditCard(double balance, double creditLimit, String number, boolean active) {
+    public CreditCard(String number,double balance, double creditLimit, boolean active) {
         super(number, active);
         this.balance = balance;
         this.creditLimit = creditLimit;

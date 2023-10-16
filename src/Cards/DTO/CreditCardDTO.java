@@ -1,7 +1,5 @@
 package Cards.DTO;
 
-import Cards.*;
-
 /**
  *
  * @author abiga

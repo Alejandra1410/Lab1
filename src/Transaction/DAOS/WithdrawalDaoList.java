@@ -4,8 +4,9 @@
  */
 package Transaction.DAOS;
 
-import Dao.Dao;
+import Dao.DaoTransaction;
 import Transaction.DTO.WithdrawalDTO;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -13,41 +14,44 @@ import java.util.List;
  *
  * @author ekard
  */
-public class WithdrawalDaoList implements Dao<WithdrawalDTO>{
-     private HashMap<String,WithdrawalDTO> WithdrawalDaoList;
-     private static WithdrawalDaoList whitdrawalInstance;
-      private WithdrawalDaoList(){
-      WithdrawalDaoList=new HashMap();
+public class WithdrawalDaoList implements DaoTransaction<WithdrawalDTO> {
+    private HashMap<String, WithdrawalDTO> withdrawalList;
+    private static WithdrawalDaoList withdrawalInstance;
+
+    private WithdrawalDaoList() {
+        withdrawalList = new HashMap<>();
     }
-      public static WithdrawalDaoList getInstance(){
-          if (whitdrawalInstance==null) {
-            whitdrawalInstance= new WithdrawalDaoList();
-          }
-          return whitdrawalInstance;
-      }
+
+    public static WithdrawalDaoList getInstance() {
+        if (withdrawalInstance == null) {
+            withdrawalInstance = new WithdrawalDaoList();
+        }
+        return withdrawalInstance;
+    }
+
     @Override
     public boolean create(WithdrawalDTO obj) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//        if (obj == null) {
+//            return false;
+//        }
+//        String id = obj.getId();
+//
+//        if (!withdrawalList.containsKey(id)) {
+//            withdrawalList.put(id, obj);
+//            return true;
+//        } else {
+//            return false;
+//        }
+return false;
     }
 
     @Override
     public WithdrawalDTO read(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return withdrawalList.get(id);
     }
 
     @Override
     public List<WithdrawalDTO> readAll() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return new ArrayList<>(withdrawalList.values());
     }
-
-    @Override
-    public boolean update(WithdrawalDTO obj) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public boolean delete(WithdrawalDTO obj) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
 }

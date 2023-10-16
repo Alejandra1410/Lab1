@@ -12,7 +12,7 @@ import java.sql.Date;
  *
  * @author ekard
  */
-public class DepositDTO extends TransactionDTO { //Falta AccountDTO CREOOO
+public class DepositDTO extends TransactionDTO { 
 
     public DepositDTO(double amount, AccountDto source, Date date) {
         super(amount, source, date);

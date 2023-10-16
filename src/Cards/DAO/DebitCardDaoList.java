@@ -1,7 +1,8 @@
 package Cards.DAO;
 
 import Cards.DTO.DebitCardDTO;
-import Dao.Dao;
+import Dao.DaoCard;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -9,9 +10,9 @@ import java.util.List;
  *
  * @author abiga
  */
-public class DebitCardDaoList  implements Dao<DebitCardDTO>{
+public class DebitCardDaoList  implements DaoCard<DebitCardDTO>{
      private HashMap<String,DebitCardDTO> DebitCardList;
-     private static DebitCardDaoList instance; // Instancia única
+     private static DebitCardDaoList instance;
 
     private DebitCardDaoList() {
         DebitCardList = new HashMap<>();
@@ -44,22 +45,7 @@ public class DebitCardDaoList  implements Dao<DebitCardDTO>{
 
     @Override
     public List<DebitCardDTO> readAll() {
-     // return new ArrayList<>(debitCardList.values());
-         return null;
-    }
-
-    @Override
-    public boolean update(DebitCardDTO obj) { //Preguntar a JP si es necesario el update
-        return create(obj);
-//        if (updatedDebitCard == null)
-//            return false;
-//        String updatedCardNumber = updatedDebitCard.getNumber();
-//        if (DebitCardList.containsKey(updatedCardNumber)) {
-//            DebitCardList.put(updatedCardNumber, updatedDebitCard);
-//            return true;
-//        } else {
-//            return false; // La tarjeta a actualizar no existe
-        
+     return new ArrayList<>(DebitCardList.values());
     }
 
     @Override
