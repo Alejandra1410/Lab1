@@ -22,4 +22,23 @@ public class Withdrawal extends Transaction {
            return false;
         }
     }
+    @Override
+    public Withdrawal clone() {
+        try {
+            return (Withdrawal) super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public Withdrawal saveToMemento() {
+        return this.clone();
+    }
+
+    public void restoreFromMemento(Withdrawal memento) {
+    this.amount = memento.getAmount();
+    this.source = memento.getSource();
+    this.date = memento.getDate();
+    }
 }

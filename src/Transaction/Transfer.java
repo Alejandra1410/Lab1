@@ -34,4 +34,27 @@ public class Transfer extends Transaction {
     public Account getDestination() {
         return destination;
     }
+    @Override
+    public Transfer clone() {
+        try {
+            return (Transfer) super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    public Transfer saveToMemento() {
+        return this.clone();
+    }
+
+    // Método para restaurar el estado de la Transfer desde un Memento
+    public void restoreFromMemento(Transfer memento) {
+        this.amount = memento.getAmount();
+        this.source = memento.getSource();
+        this.destination = memento.getDestination();
+        this.date = memento.getDate();
+    }
 }
+

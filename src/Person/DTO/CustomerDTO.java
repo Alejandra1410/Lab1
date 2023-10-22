@@ -31,6 +31,9 @@ public class CustomerDTO extends Person {
     public String getEmail() {
         return email;
     }
+     public String getAddress() {
+        return address;
+    }
    
 }
   

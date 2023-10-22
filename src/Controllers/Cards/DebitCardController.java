@@ -1,87 +1,87 @@
 package Controllers.Cards;
 
-import Cards.DAO.DebitCardDaoList;
+import Cards.DebitCard;
 import Controllers.Controller;
+import Controllers.ControllerCard;
 import Dao.Dao;
 import Views.View;
+import java.util.ArrayList;
 import java.util.List;
 
-public class DebitCardController implements Controller<DebitCardDaoList> {
+public class DebitCardController implements ControllerCard<DebitCard> {
     private View view;
-    private Dao<DebitCardDaoList> dao;
+    private Dao<DebitCard> dao;
 
-    public DebitCardController(View view, Dao<DebitCardDaoList> dao) {
+    public DebitCardController(View view, Dao<DebitCard> dao) {
         this.view = view;
         this.dao = dao;
     }
 
     @Override
-    public boolean create(DebitCardDaoList debitCardList) {
+    public boolean create(DebitCard card) {
         try {
-            if (dao.create(debitCardList)) {
-                view.displayMessage("Lista de tarjetas de débito creada correctamente");
-                return true;
-            } else {
-                view.displayMessage("Error al agregar la lista de tarjetas de débito");
+            if (dao.read(card.getNumber()) != null) {
+                view.displayMessage("Número de tarjeta duplicado");
                 return false;
+            } else {
+                if (dao.create(card)) {
+                    view.displayMessage("Tarjeta de débito creada exitosamente.");
+                    return true;
+                } else {
+                    view.displayMessage("Error al crear la tarjeta de débito.");
+                    return false;
+                }
             }
         } catch (Exception e) {
+            e.printStackTrace();
             return false;
         }
     }
 
     @Override
-    public DebitCardDaoList read(String id) {
+    public DebitCard read(String number) {
         try {
-            DebitCardDaoList debitCardList = dao.read(id);
-            if (debitCardList != null) {
-                view.display(debitCardList);
+            DebitCard card = dao.read(number);
+            if (card != null) {
+                view.display(card);
             } else {
-                view.displayMessage("Lista de tarjetas de débito no encontrada");
+                view.displayMessage("Tarjeta de débito no encontrada.");
             }
-            return debitCardList;
+            return card;
         } catch (Exception e) {
+            e.printStackTrace();
             return null;
         }
     }
 
     @Override
-    public List<DebitCardDaoList> readAll() {
+    public List<DebitCard> readAll() {
         try {
-            List<DebitCardDaoList> debitCardLists = dao.readAll();
-            return debitCardLists;
+            List<DebitCard> cards = dao.readAll();
+            if (cards.isEmpty()) {
+                view.displayMessage("No se encontraron tarjetas de débito.");
+            } else {
+                view.display(cards);
+            }
+            return cards;
         } catch (Exception e) {
-            return null;
+            e.printStackTrace();
+            return new ArrayList<>();
         }
     }
 
     @Override
-    public boolean update(DebitCardDaoList debitCardList) {
+    public boolean delete(DebitCard card) {
         try {
-            if (dao.update(debitCardList)) {
-                view.displayMessage("Lista de tarjetas de débito actualizada correctamente");
-                return true;
-            } else {
-                view.displayMessage("Error al actualizar la lista de tarjetas de débito");
+            if (dao.read(card.getNumber()) == null) {
+                view.displayMessage("No se puede eliminar la tarjeta. Tarjeta no encontrada.");
                 return false;
+            } else {
+                return dao.delete(card);
             }
         } catch (Exception e) {
-            return false;
+            e.printStackTrace();
         }
-    }
-
-    @Override
-    public boolean delete(DebitCardDaoList debitCardList) {
-        try {
-            if (dao.delete(debitCardList)) {
-                view.displayMessage("Lista de tarjetas de débito eliminada correctamente");
-                return true;
-            } else {
-                view.displayMessage("Error al eliminar la lista de tarjetas de débito");
-                return false;
-            }
-        } catch (Exception e) {
-            return false;
-        }
+        return false;
     }
 }

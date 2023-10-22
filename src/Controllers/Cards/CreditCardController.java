@@ -1,92 +1,86 @@
 package Controllers.Cards;
 
-import Cards.DAO.CreditCardDaoList;
-import Controllers.Controller;
+import Cards.CreditCard;
+import Controllers.ControllerCard;
 import Dao.Dao;
 import Views.View;
 import java.util.List;
 
-public class CreditCardController implements Controller<CreditCardDaoList> {
+public class CreditCardController implements ControllerCard<CreditCard> {
     private View view;
-    private Dao<CreditCardDaoList> dao;
+    private Dao<CreditCard> dao;
 
-    public CreditCardController(View view, Dao<CreditCardDaoList> dao) {
+    public CreditCardController(View view, Dao<CreditCard> dao) {
         this.view = view;
         this.dao = dao;
     }
 
     @Override
-    public boolean create(CreditCardDaoList creditCardDaoList) {
+    public boolean create(CreditCard card) {
         try {
-            if (dao.create(creditCardDaoList)) {
-                view.displayMessage("Tarjeta de crédito creada correctamente");
-                return true;
-            } else {
-                view.displayMessage("Error al agregar la tarjeta de crédito");
+            if (dao.read(card.getNumber()) != null) {
+                view.displayMessage("Número de tarjeta duplicado");
                 return false;
+            } else {
+                if (dao.create(card)) {
+                    view.displayMessage("Tarjeta de crédito creada exitosamente.");
+                    return true;
+                } else {
+                    view.displayMessage("Error al crear la tarjeta de crédito.");
+                    return false;
+                }
             }
-        } catch (Exception ex) {
-            view.displayMessage("Error al agregar la tarjeta de crédito: " + ex.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
             return false;
         }
     }
 
     @Override
-    public CreditCardDaoList read(String id) {
+    public CreditCard read(String number) {
         try {
-            CreditCardDaoList creditCardDaoList = dao.read(id);
-            if (creditCardDaoList != null) {
-                view.display(creditCardDaoList);
+            CreditCard card = dao.read(number);
+            if (card != null) {
+                view.display(card);
             } else {
-                view.displayMessage("Tarjeta de crédito no encontrada");
+                view.displayMessage("Tarjeta de crédito no encontrada.");
             }
-            return creditCardDaoList;
-        } catch (Exception ex) {
-            view.displayMessage("Error al leer la tarjeta de crédito: " + ex.getMessage());
+            return card;
+        } catch (Exception e) {
+            e.printStackTrace();
             return null;
         }
     }
 
     @Override
-    public List<CreditCardDaoList> readAll() {
+    public List<CreditCard> readAll() {
         try {
-            List<CreditCardDaoList> creditCardDaoLists = dao.readAll();
-            return creditCardDaoLists;
-        } catch (Exception ex) {
-            view.displayMessage("Error al leer todas las tarjetas de crédito: " + ex.getMessage());
+            List<CreditCard> cards = dao.readAll();
+            if (cards.isEmpty()) {
+                view.displayMessage("No se encontraron tarjetas de crédito.");
+            } else {
+                view.display(cards);
+            }
+            return cards;
+        } catch (Exception e) {
+            e.printStackTrace();
             return null;
         }
     }
 
+   
     @Override
-    public boolean update(CreditCardDaoList creditCardDaoList) {
+    public boolean delete(CreditCard card) {
         try {
-            if (dao.update(creditCardDaoList)) {
-                view.displayMessage("Tarjeta de crédito actualizada correctamente");
-                return true;
-            } else {
-                view.displayMessage("Error al actualizar la tarjeta de crédito");
+            if (dao.read(card.getNumber()) == null) {
+                view.displayMessage("No se puede eliminar la tarjeta. Tarjeta no encontrada.");
                 return false;
-            }
-        } catch (Exception ex) {
-            view.displayMessage("Error al actualizar la tarjeta de crédito: " + ex.getMessage());
-            return false;
-        }
-    }
-
-    @Override
-    public boolean delete(CreditCardDaoList creditCardDaoList) {
-        try {
-            if (dao.delete(creditCardDaoList)) {
-                view.displayMessage("Tarjeta de crédito eliminada correctamente");
-                return true;
             } else {
-                view.displayMessage("Error al eliminar la tarjeta de crédito");
-                return false;
+                return dao.delete(card);
             }
-        } catch (Exception ex) {
-            view.displayMessage("Error al eliminar la tarjeta de crédito: " + ex.getMessage());
-            return false;
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        return false;
     }
 }

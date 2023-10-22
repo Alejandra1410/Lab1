@@ -17,4 +17,24 @@ public class Deposit extends Transaction {
             return false;
         }
     }
+    @Override
+    public Deposit clone() {
+        try {
+            return (Deposit) super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public Deposit saveToMemento() {
+        return this.clone();
+    }
+
+    public void restoreFromMemento(Deposit memento) {
+    this.amount = memento.getAmount();
+    this.source = memento.getSource();
+    this.date = memento.getDate();
+    }
+    
 }

@@ -1,92 +1,81 @@
 package Controllers.Account;
 
-import Account.Dao.ColonAccountDao;
+import Account.ColonAccount;
 import Controllers.Controller;
 import Dao.Dao;
 import Views.View;
+import java.util.ArrayList;
 import java.util.List;
 
-public class ColonAccountController implements Controller<ColonAccountDao> {
+public class ColonAccountController implements Controller<ColonAccount> {
     private View view;
-    private Dao<ColonAccountDao> dao;
+    private Dao dao;
 
-    public ColonAccountController(View view, Dao<ColonAccountDao> dao) {
+    public ColonAccountController(View view, Dao dao) {
         this.view = view;
         this.dao = dao;
     }
 
     @Override
-    public boolean create(ColonAccountDao accountDao) {
-        try {
-            if (dao.create(accountDao)) {
-                view.displayMessage("Cuenta creada correctamente");
+    public boolean create(ColonAccount account) {
+        if (dao.read(account.getNumber()) != null) {
+            view.displayMessage("Número de cuenta duplicado");
+            return false;
+        } else {
+            if (dao.create(account)) {
+                view.displayMessage("Cuenta en colones creada exitosamente.");
                 return true;
             } else {
-                view.displayMessage("Error al agregar la cuenta");
+                view.displayMessage("Error al crear la cuenta en colones.");
                 return false;
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
         }
     }
 
     @Override
-    public ColonAccountDao read(String accountNumber) {
-        try {
-            ColonAccountDao accountDao = dao.read(accountNumber);
-            if (accountDao != null) {
-                view.display(accountDao);
-            } else {
-                view.displayMessage("Cuenta no encontrada");
-            }
-            return accountDao;
-        } catch (Exception e) {
-            e.printStackTrace();
+    public ColonAccount read(String number) {
+        ColonAccount account = (ColonAccount) dao.read(number);
+        if (account == null) {
+            view.displayMessage("Número de cuenta no encontrado");
             return null;
+        } else {
+            view.display(account);
+            return account;
         }
     }
 
     @Override
-    public List<ColonAccountDao> readAll() {
-        try {
-            List<ColonAccountDao> accountDaos = dao.readAll();
-            return accountDaos;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
+    public List<ColonAccount> readAll() {
+        List<ColonAccount> accountList = new ArrayList<>();
+        List<ColonAccount> accounts = dao.readAll();
+        accountList.addAll(accounts);
+
+        return accountList;
     }
 
     @Override
-    public boolean update(ColonAccountDao accountDao) {
-        try {
-            if (dao.update(accountDao)) {
-                view.displayMessage("Cuenta actualizada correctamente");
-                return true;
-            } else {
-                view.displayMessage("Error al actualizar la cuenta");
-                return false;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+    public boolean update(ColonAccount account) {
+        ColonAccount accountExists = (ColonAccount) dao.read(account.getNumber());
+        if (accountExists == null) {
+            view.displayMessage("No se puede actualizar la cuenta. Cuenta no existente.");
             return false;
         }
+
+        if (dao.update(account)) {
+            view.displayMessage("Cuenta en colones actualizada exitosamente.");
+            return true;
+        }
+        return false;
     }
 
     @Override
-    public boolean delete(ColonAccountDao accountDao) {
-        try {
-            if (dao.delete(accountDao)) {
-                view.displayMessage("Cuenta eliminada correctamente");
-                return true;
-            } else {
-                view.displayMessage("Error al eliminar la cuenta");
-                return false;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+    public boolean delete(ColonAccount account) {
+        ColonAccount accountExists = (ColonAccount) dao.read(account.getNumber());
+        if (accountExists == null) {
+            view.displayMessage("No se puede eliminar la cuenta. Cuenta no existente.");
             return false;
+        } else {
+            return dao.delete(account);
         }
     }
 }

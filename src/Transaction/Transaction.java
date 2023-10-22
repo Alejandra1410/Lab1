@@ -10,10 +10,10 @@ import java.sql.Date;
  *
  * @author abiga
  */
-public abstract class Transaction {
-    private double amount;
-    private Account source;
-    private Date date;
+public abstract class Transaction implements Cloneable {
+    double amount;
+    Account source;
+    Date date;
 
     public double getAmount() {
         return amount;
@@ -39,5 +39,26 @@ public abstract class Transaction {
     }
     
     public abstract boolean execute();
+
+    public Transaction cloneTransaction() {
+        try {
+            return (Transaction) this.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public Transaction saveToMemento() {
+        return this.cloneTransaction();
+    }
+
+    public void restoreFromMemento(Transaction memento) {
+        this.amount = memento.getAmount();
+        this.source = memento.getSource();
+        this.date = memento.getDate();
+    }
 }
+
+
 

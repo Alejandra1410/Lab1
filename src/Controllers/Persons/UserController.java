@@ -27,7 +27,6 @@ public class UserController implements Controller<User> {
             view.displayMessage("Id de usuario duplicado");
             return false;
         }else{
-            //Validad integridad
             UserDTO userDto =new UserDTO(user.getId(),user.getName(),user.getUserName(),user.getPassword());
             if (dao.create(userDto)){
                view.displayMessage("Usuario creado correctamente");

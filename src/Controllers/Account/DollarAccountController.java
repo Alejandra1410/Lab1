@@ -1,105 +1,82 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Controllers.Account;
 
 import Account.DollarAccount;
 import Controllers.Controller;
 import Dao.Dao;
 import Views.View;
+import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author wendy
- */
 public class DollarAccountController implements Controller<DollarAccount> {
-    private Dao<DollarAccount> dao;
     private View view;
+    private Dao dao;
 
-    public DollarAccountController(Dao<DollarAccount> dao, View view) {
-        this.dao = dao;
+    public DollarAccountController(View view, Dao dao) {
         this.view = view;
+        this.dao = dao;
     }
 
     @Override
     public boolean create(DollarAccount account) {
-        try {
-            boolean success = dao.create(account);
-            if (success) {
+        if (dao.read(account.getNumber()) != null) {
+            view.displayMessage("Número de cuenta duplicado");
+            return false;
+        } else {
+            
+            if (dao.create(account)) {
                 view.displayMessage("Cuenta en dólares creada exitosamente.");
+                return true;
             } else {
                 view.displayMessage("Error al crear la cuenta en dólares.");
+                return false;
             }
-            return success;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
         }
     }
 
     @Override
     public DollarAccount read(String number) {
-        try {
-            DollarAccount account = dao.read(number);
-            if (account != null) {
-                view.display(account);
-            } else {
-                view.displayMessage("Cuenta en dólares no encontrada.");
-            }
-            return account;
-        } catch (Exception e) {
-            e.printStackTrace();
+        DollarAccount account = (DollarAccount) dao.read(number);
+        if (account == null) {
+            view.displayMessage("Número de cuenta no encontrado");
             return null;
+        } else {
+            view.display(account);
+            return account;
         }
     }
 
     @Override
     public List<DollarAccount> readAll() {
-        try {
-            List<DollarAccount> accounts = dao.readAll();
-            if (accounts.isEmpty()) {
-                view.displayMessage("No se encontraron cuentas en dólares.");
-            } else {
-                view.display(accounts);
-            }
-            return accounts;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
+        List<DollarAccount> accountList = new ArrayList<>();
+        List<DollarAccount> accounts = dao.readAll();
+        accountList.addAll(accounts);
+
+        return accountList;
     }
 
     @Override
     public boolean update(DollarAccount account) {
-        try {
-            boolean success = dao.update(account);
-            if (success) {
-                view.displayMessage("Cuenta en dólares actualizada exitosamente.");
-            } else {
-                view.displayMessage("Error al actualizar la cuenta en dólares.");
-            }
-            return success;
-        } catch (Exception e) {
-            e.printStackTrace();
+        DollarAccount accountExists = (DollarAccount) dao.read(account.getNumber());
+        if (accountExists == null) {
+            view.displayMessage("No se puede actualizar la cuenta. Cuenta no existente.");
             return false;
         }
+
+        if (dao.update(account)) {
+            view.displayMessage("Cuenta en dólares actualizada exitosamente.");
+            return true;
+        }
+        return false;
     }
 
     @Override
     public boolean delete(DollarAccount account) {
-        try {
-            boolean success = dao.delete(account);
-            if (success) {
-                view.displayMessage("Cuenta en dólares eliminada exitosamente.");
-            } else {
-                view.displayMessage("Error al eliminar la cuenta en dólares.");
-            }
-            return success;
-        } catch (Exception e) {
-            e.printStackTrace();
+        DollarAccount accountExists = (DollarAccount) dao.read(account.getNumber());
+        if (accountExists == null) {
+            view.displayMessage("No se puede eliminar la cuenta. Cuenta no existente.");
             return false;
+        } else {
+            return dao.delete(account);
         }
     }
 }
